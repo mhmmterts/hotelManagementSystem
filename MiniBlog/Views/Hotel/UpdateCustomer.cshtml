@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrete.Customer
+@{
+    ViewBag.Title = "UpdateCustomer";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<a class="btn btn-danger" style="margin-bottom: 10px" href="/Hotel/AdminCustomerList">Geri Dön</a>
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.CustomerId)
+    @Html.Label("Müşteri ID")
+    @Html.TextBoxFor(x => x.CustomerId, new { @class = "form-control", @disabled = "disabled" })
+    @Html.Label("Müşteri İsmi")
+    @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control", @onchange = "this.value = trim(this.value)", @required = "required"})
+    @Html.Label("Müşteri Email")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @type = "email" })
+    @Html.Label("Müşteri Şifre")
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @oninput = "this.value = trim(this.value)", @required = "required" })
+    @Html.Label("Müşteri Telefon Numarası")
+    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", onInput = "this.value = phoneFormat(this.value)", pattern = ".{14,14}", @required = "required" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
+

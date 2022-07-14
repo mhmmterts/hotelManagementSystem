@@ -1,0 +1,342 @@
+﻿﻿@model EntityLayer.Concrete.Rating
+@{
+    ViewBag.Title = "RatingResults";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+<head>
+    <link href="~/Content/ratingScores.css" rel="stylesheet" />
+</head>
+<a class="btn btn-danger" style="margin-top:10px" href="/Panel/Index"><i class="glyphicon glyphicon-menu-left"></i>Geri Dön</a>
+<div class="container">
+    <span class="heading">Genel Değerlendirme Puanı</span>
+    @if (ViewBag.rating7 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+    }
+    else if (ViewBag.rating7 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+    }
+    else if (ViewBag.rating7 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    }
+    else if (ViewBag.rating7 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    }
+    <p>Ortalama puan 5 üzerinden @ViewBag.rating7. Katılımcı sayısı @ViewBag.nrOfCustomers.</p>
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>1. Otelimizin konumu ve ulaşım imkanlarından ne derece memnun kaldınız ?</label><br>
+    @if (ViewBag.rating1 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating1 Puan</b></span>
+    }
+    else if (ViewBag.rating1 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating1 Puan</b></span>
+    }
+    else if (ViewBag.rating1 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating1 Puan</b></span>
+    }
+    else if (ViewBag.rating1 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating1 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating1 Puan</b></span>
+    }
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>2. Otel çalışanlarımızın hizmet kalitesinde ne derece memnun kaldınız?</label><br>
+    @if (ViewBag.rating2 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating2 Puan</b></span>
+    }
+    else if (ViewBag.rating2 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating2 Puan</b></span>
+    }
+    else if (ViewBag.rating2 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating2 Puan</b></span>
+    }
+    else if (ViewBag.rating2 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating2 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating2 Puan</b></span>
+    }
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>3. Açık büfe hizmetimiz ve çay saatlerimizden ne derece memnun kaldınız?</label><br>
+    @if (ViewBag.rating3 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating3 Puan</b></span>
+    }
+    else if (ViewBag.rating3 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating3 Puan</b></span>
+    }
+    else if (ViewBag.rating3 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating3 Puan</b></span>
+    }
+    else if (ViewBag.rating3 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating3 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating3 Puan</b></span>
+    }
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>4. Otelimizin temizlikk ve hijyeninden ne derece memnun kaldınız?</label><br>
+    @if (ViewBag.rating4 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating4 Puan</b></span>
+    }
+    else if (ViewBag.rating4 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating4 Puan</b></span>
+    }
+    else if (ViewBag.rating4 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating4 Puan</b></span>
+    }
+    else if (ViewBag.rating4 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating4 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating4 Puan</b></span>
+    }
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>5. Otelimizin sunduğu ek aktivitelerden ne derece memnun kaldınız?</label><br>
+    @if (ViewBag.rating5 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating5 Puan</b></span>
+    }
+    else if (ViewBag.rating5 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating5 Puan</b></span>
+    }
+    else if (ViewBag.rating5 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating5 Puan</b></span>
+    }
+    else if (ViewBag.rating5 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating5 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating5 Puan</b></span>
+    }
+    <hr style="border:3px solid #f1f1f1">
+
+    <label>6. Yiyecek ve içecek kalitemizden ne derece memnun kaldınız?</label><br>
+    @if (ViewBag.rating6 == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating6 Puan</b></span>
+    }
+    else if (ViewBag.rating6 >= 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating6 Puan</b></span>
+    }
+    else if (ViewBag.rating6 >= 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating6 Puan</b></span>
+    }
+    else if (ViewBag.rating6 >= 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating6 Puan</b></span>
+    }
+    else
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span style="font-size:30px;margin-left:10px"><b>@ViewBag.rating6 Puan</b></span>
+    }
+</div>
+<br />
+<br />
+

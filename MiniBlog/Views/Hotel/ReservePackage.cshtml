@@ -1,0 +1,83 @@
+﻿@model EntityLayer.Concrete.Customer
+@{
+    ViewBag.Title = "ReservePackage";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="container" role="alert" style="width:50%;margin:auto; position:relative; margin-top: 10px; border-radius:15px;font-size:16px;background-color:gray">
+    <h2 style="text-align:center">Ödeme Sayfasına Hoşgeldiniz</h2>
+    <table class="table table-borderless">
+        <tr>
+            <td>Müşteri ID: </td>
+            <td>@Html.DisplayFor(x => x.CustomerId)</td>
+        </tr>
+        <tr>
+            <td>Müşteri İsim ve Soyisim: </td>
+            <td>@Html.DisplayFor(x => x.CustomerName)</td>
+        </tr>
+        <tr>
+            <td>Müşteri Email: </td>
+            <td>@Html.DisplayFor(x => x.Mail)</td>
+        </tr>
+        <tr>
+            <td>Müşteri Telefon Numarası: </td>
+            <td>@Html.DisplayFor(x => x.PhoneNumber)</td>
+        </tr>
+        <tr>
+            <td>Paket Kişi Sayısı: </td>
+            <td>@ViewBag.nrofcustomers</td>
+        </tr>
+        <tr>
+            <td>Paket İsmi: </td>
+            <td>@ViewBag.reservation.ReservationName</td>
+        </tr>
+        <tr>
+            <td>Paket Ücreti: </td>
+            <td>@ViewBag.reservation.ReservationPrice TL</td>
+        </tr>
+        <tr>
+            <td>Başlangıç Tarihi: </td>
+            <td>@ViewBag.reservation.StartDate.ToString("dd.MM.yyyy")</td>
+        </tr>
+        <tr>
+            <td>Bitiş Tarihi: </td>
+            <td>@ViewBag.reservation.EndDate.ToString("dd.MM.yyyy")</td>
+        </tr>
+        <tr>
+            <td>Seçilen Ek Hizmetler:</td>
+            @if (ViewBag.bookedActivities.Count == 0)
+            {
+                <td>Ek hizmet seçilmemiştir</td>
+            }
+        </tr>
+        @foreach (var item in ViewBag.bookedActivities)
+        {
+            <tr>
+                <td>- @item.ActivityName: </td>
+                <td>@item.ActivityPrice TL * @ViewBag.nrofcustomers</td>
+            </tr>
+        }
+        @if (ViewBag.bookedActivities.Count != 0)
+        {
+            <tr>
+                <td><b>*NOT:</b> ek hizmetler için kişi başı ücret alınır.</td>
+            </tr>
+        }
+        <tr>
+            <td>Ödenecek Toplam Tutar</td>
+            <td>@ViewBag.totalPrice TL</td>
+        </tr>
+
+    </table>
+    <form class="form-group" method="post" style="text-decoration:double">
+        <input type="hidden" value="@ViewBag.reservation.ReservationId" name="ReservationId" />
+        @Html.HiddenFor(x => x.CustomerId, new { @name = "CustomerId" })
+        <button class="btn btn-info mr-auto" style="font-size:12px; display: block;float:right" onclick="return confirm('Ödeme işlemi gerçekleştirilecek. Kabul ediyor musunuz?')">
+            Ödeme Yap
+        </button>
+        <a class="btn btn-danger"  style="margin: 0px 10px 15px 0px; font-size: 12px; float: right;" href="/Hotel/BookPackage" onclick="return confirm('Ödeme işlemi iptal edilecek. Kabul ediyor musunuz?')">
+            İptal Et
+        </a>
+    </form>
+</div>
+<br />
+

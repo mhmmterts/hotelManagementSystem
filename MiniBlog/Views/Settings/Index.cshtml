@@ -1,0 +1,40 @@
+﻿﻿@model IEnumerable<EntityLayer.Concrete.Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+    <h2>Adminler</h2>
+
+<!--Kayitli adminler tablosu baslangic-->
+<table class="table table-striped;" style="position:center; background-color: lightgray; table-layout: auto;">
+    <tr style="background-color:gold">
+        <th>Admin Id</th>
+        <th>Admin Name</th>
+        <th>Admin Username</th>
+        <th>Authority</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.AdminId</td>
+            <td>@person.Name</td>
+            <td>@person.Username</td>
+            <td>@person.AdminRole</td>
+            @if (person.Name == "default")
+            {
+                <td><a href="/Settings/Delete/@person.AdminId" class="btn btn-danger disabled" style="background-color:darkred" onclick="return confirm(' Are you sure you want to delete Admin:\n @person.AdminId')"><i class="glyphicon glyphicon-trash"> Delete</i></a></td>
+            }
+            else
+            {
+                <td><a href="/Settings/Delete/@person.AdminId" class="btn btn-danger" style="background-color:darkred" onclick="return confirm(' Are you sure you want to delete Admin:\n @person.AdminId')"><i class="glyphicon glyphicon-trash"> Delete</i></a></td>
+            }
+            <td><a href="/Settings/GetAdmin/@person.AdminId" class="btn btn-info" style="background-color:darkseagreen;color:black"><i class="glyphicon glyphicon-pencil"> Edit</i></a></td>
+        </tr>
+    }
+</table>
+<!--Kayitli adminler tablosu bitis-->
+<a style="margin-bottom:15px" href="/Settings/AddAdmin/" class="btn btn-primary">Yeni Admin Ekle</a>
+

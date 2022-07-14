@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Contact
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<a class="btn btn-info" style="margin-bottom:10px" href="/Contact/SendBox"><i class="glyphicon glyphicon-menu-left"></i>Geri Dön</a>
+<!--İletisim formu detay goruntuleme formu baslangic-->
+<div class="form-group">
+    <label>Form Id</label>
+    @Html.TextBoxFor(form => form.ContactId, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Gönderici İsim</label>
+    @Html.TextBoxFor(form => form.Name, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Gönderici Soyisim</label>
+    @Html.TextBoxFor(form => form.Surname, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Email</label>
+    @Html.TextBoxFor(form => form.Mail, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Konu</label>
+    @Html.TextBoxFor(form => form.Subject, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <label>Messaj Tarih ve Saati</label>
+    @Html.TextBoxFor(form => form.MessageDate, new { @class = "form-control", @readonly = "readonly", @id = "myTextArea" })
+    <br />
+    <label>Messaj İçeriği</label>
+    @Html.TextAreaFor(form => form.Message, new { @class = "form-control", @readonly = "readonly", @id = "myTextArea" })
+    <br />
+</div>

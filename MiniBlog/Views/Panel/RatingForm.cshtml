@@ -1,0 +1,174 @@
+﻿﻿@model EntityLayer.Concrete.Rating
+@{
+    ViewBag.Title = "RatingForm";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form in HTML Example </title>
+
+    <meta name="author" content="Codeconvey" />
+    <link href="~/Content/ratingForm.css" rel="stylesheet" />
+
+</head>
+<body>
+    <a class="btn btn-danger" style="margin-top:10px" href="/Panel/Index">Geri Dön</a>
+    <header class="ScriptHeader">
+        <div class="rt-container">
+            <div class="col-rt-12">
+                <div class="rt-heading">
+                    <h1>Hizmet Değerlendirme Formu</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="rt-container">
+            <div class="col-rt-12">
+                <div class="Scriptcontent">
+
+
+                    <div class="feedback">
+                        <p>
+                            Sayın Müşterimiz,<br>
+                            Tatilinizde TAU Tatil Köyünü tercih etmeniz bizi çok sevindirdi. Sizlere daha iyi hizmet verebilmek ve müşteri memnuniyeti artırabilmek başlıca görevlerimiz arasındadır.
+                            Bu sebepten ötürü aşağıdaki formu doldurarak hizmet memnuniyetinizi, öneri veya şikayetlerinizi bizlere iletebilirsiniz.
+                        </p>
+                        <form method="post">
+                            <label>1. Otelimizin konumu ve ulaşım imkanlarından ne derece memnun kaldınız?</label><br>
+
+                            <span class="star-rating">
+                                <input type="radio" name="Rating1" value="1"><i></i>
+                                <input type="radio" name="Rating1" value="2"><i></i>
+                                <input type="radio" name="Rating1" value="3"><i></i>
+                                <input type="radio" name="Rating1" value="4"><i></i>
+                                <input type="radio" name="Rating1" value="5"><i></i>
+                            </span>
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>2. Otel çalışanlarımızın hizmet kalitesinden ne derece memnun kaldınız?</label><br>
+                            <span class="star-rating">
+                                <input type="radio" name="Rating2" value="1"><i></i>
+                                <input type="radio" name="Rating2" value="2"><i></i>
+                                <input type="radio" name="Rating2" value="3"><i></i>
+                                <input type="radio" name="Rating2" value="4"><i></i>
+                                <input type="radio" name="Rating2" value="5"><i></i>
+                            </span>
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>3. Açık büfe hizmetimiz ve çay saatlerimizden ne derece memnun kaldınız?</label><br>
+                            <span class="star-rating">
+                                <input type="radio" name="Rating3" value="1"><i></i>
+                                <input type="radio" name="Rating3" value="2"><i></i>
+                                <input type="radio" name="Rating3" value="3"><i></i>
+                                <input type="radio" name="Rating3" value="4"><i></i>
+                                <input type="radio" name="Rating3" value="5"><i></i>
+                            </span>
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>4. Otelimizin temizlik ve hijyeninden ne derece memnun kaldınız?</label><br>
+                            <span class="star-rating">
+                                <input type="radio" name="Rating4" value="1"><i></i>
+                                <input type="radio" name="Rating4" value="2"><i></i>
+                                <input type="radio" name="Rating4" value="3"><i></i>
+                                <input type="radio" name="Rating4" value="4"><i></i>
+                                <input type="radio" name="Rating4" value="5"><i></i>
+                            </span>
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>5. Otelimizin sunduğu ek aktivitelerden ne derece memnun kaldınız?</label><br>
+                            <span class="star-rating">
+                                <input type="radio" name="Rating5" value="1"><i></i>
+                                <input type="radio" name= " Rating5" value="2"><i></i>
+                                <input type="radio" name="Rating5" value="3"><i></i>
+                                <input type="radio" name="Rating5" value="4"><i></i>
+                                <input type="radio" name="Rating5" value="5"><i></i>
+                            </span>
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>6. Yiyecek ve içecek kalitemizden ne derece memnun kaldınız?</label><br>
+                            <span class="star-rating">
+                                <input type="radio" name="Rating6" value="1"><i></i>
+                                <input type="radio" name="Rating6" value="2"><i></i>
+                                <input type="radio" name="Rating6" value="3"><i></i>
+                                <input type="radio" name="Rating6" value="4"><i></i>
+                                <input type="radio" name="Rating6" value="5"><i></i>
+                            </span>
+
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label>7. Tüm hizmet kalitesini göz önünde bulundurursanız otelimize 10 üzerinden kaç puan verirsiniz?</label><br>
+                            <div style="color:grey">
+                                <span style="float:left">
+                                    Kötü
+                                </span>
+                                <span style="float:right;margin-right:25px">
+                                    İyi
+                                </span>
+
+                            </div>
+                            <span class="scale-rating">
+                                <label value="1">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="2">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="3">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="4">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="5">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="6">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="7">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="8">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="9">
+                                    <input type="radio" name="Rating7">
+                                    <label style="width:100%;"></label>
+                                </label>
+                                <label value="10">
+                                    <input type="radio" name="Rating7" value="10">
+                                    <label style="width:100%;"></label>
+                                </label>
+                            </span>
+
+                            <div class="clear"></div>
+                            <hr class="survey-hr">
+                            <label for="m_3189847521540640526commentText">8. Eklemek istedikleriniz:</label><br />
+                            <textarea class="form-control" cols="75" name="Rating8" rows="5" style="min-height:200px"></textarea>
+                            <p align="right"><input style="background:#43a7d5;color:#fff;padding:12px;border:0;border-radius:5px;margin-top:10px;" type="submit" value="Formu gönder">&nbsp;</p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Analytics -->
+
+</body>

@@ -1,0 +1,80 @@
+﻿﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewBag.Title = "GetAdmin";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<a class="btn btn-info" style="margin-bottom:10px" href="/Settings/Index"><i class="glyphicon glyphicon-menu-left"></i>Geri Dön</a>
+<!--Admin bilgisi guncelleme formu baslangic-->
+@using (Html.BeginForm("UpdateAdmin", "Settings", FormMethod.Post))
+{
+    <div class="form-group">
+
+        <label>ID</label>
+        @Html.TextBoxFor(person => person.AdminId, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <label>Name</label>
+        @if (Html.DisplayFor(person => person.Name).ToString() == "default")
+        {
+            @Html.TextBoxFor(person => person.Name, new { @class = "form-control", @required = "required", @maxlength = "50", @placeholder = "Name", @onkeypress = "return isNumericKey(event)", @readonly = "readonly" })
+        }
+        else
+        {
+            @Html.TextBoxFor(person => person.Name, new { @class = "form-control", @required = "required", @maxlength = "50", @placeholder = "Name", @onkeypress = "return isNumericKey(event)", @onchange = "this.value = trim(this.value)" })
+        }
+        <br />
+        <label>Admin Username</label>
+        @Html.TextBoxFor(person => person.Username, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Username", @oninput = "this.value = trim(this.value)" })
+        <br />
+        <label>Admin Password</label>
+        @Html.TextBoxFor(person => person.Password, new { @class = "form-control", @required = "required", @maxlength = "20", @placeholder = "Password", @oninput = "this.value = trim(this.value)" })
+        <br />
+        <label>Admin Authority</label>
+        @if (Html.DisplayFor(person => person.Name).ToString() == "default")
+        {
+            <select class="form-control" name="AdminRole" disabled>
+                <option selected>@Html.DisplayFor(person => person.AdminRole) </option>
+                @if (Html.DisplayFor(x => x.AdminRole).ToString() == "B")
+                {
+                    <option>A</option>
+                }
+                else
+                {
+                    <option>B</option>
+                }
+            </select>
+        }
+        else
+        {
+            <select class="form-control" name="AdminRole">
+                <option selected>@Html.DisplayFor(person => person.AdminRole) </option>
+                @if (Html.DisplayFor(x => x.AdminRole).ToString() == "B")
+                {
+                    <option>A</option>
+                }
+                else
+                {
+                    <option>B</option>
+                }
+            </select>
+        }
+    </div>
+    <div>
+        <button id="defaultBtn" style="background-color:darkseagreen; color:black; margin-top:15px" class="btn btn-info">Güncelle</button>
+    </div>
+
+    if (Html.DisplayFor(x => x.Username).ToString() == Session["Username"].ToString())
+    {
+        <div class="alert-danger" role="alert" style="width:50%;margin:auto; text-align:center; position:relative; margin-top: 10px; border-radius:15px;font-size:16px">
+            <b>UYARI!!!</b><br /> Şu anda admin panelini bu hesap ile kullanmaktasınız. Eğer şifre veya kullanıcı adını güncellerseniz oturumunuz sonlandırılacaktır ve yeni bilgiler ile tekrar giriş yapmanız gerekecektir.
+        </div>
+
+    }
+}
+@if (@ViewBag.Message != null)
+{
+    <div class="alert alert-danger" role="alert" style="width:50%;margin:auto; text-align:center; position:relative; margin-top: 10px">
+        @ViewBag.Message
+    </div>
+}
+<!--Admin bilgisi guncelleme formu bitis-->

@@ -1,0 +1,53 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Contact>
+@{
+    ViewBag.Title = "SendBox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<head>
+    <title>Mesaj listesi</title>
+</head>
+<!--İletisim formu tablosu baslangic-->
+<h2>Mesaj Listesi</h2>
+@using (Html.BeginForm("SendBox", "Contact", FormMethod.Get))
+{
+    <div class="container">
+        <div style="margin-top:15px; margin-bottom:15px; margin:auto; margin-top:15px; width:50%">
+            @Html.TextBox("arama", "", new { @class = "form-control", @style = "width:60%;float:left;margin-bottom:10px", @placeholder = "İsim veya email ara...", @maxlength = "30" })
+            <input class="btn btn-success" style="margin-left:15px; width:20%" type="submit" value="Arama yap">
+            <a href="/Contact/SendBox" class="btn btn-info" style="margin-left:7px">Sıfırla</a>
+        </div>
+    </div>
+}
+<table class="table table-striped" style="position:center; background-color: lightgray;margin-bottom:-5px">
+    <tr>
+        <th>Form Id</th>
+        <th>Gönderici İsim</th>
+        <th>Gönderici Soyisim</th>
+        <th>Email</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Mesaj Tarihi</th>
+        <th>Detay</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var form in Model)
+    {
+        <tr>
+            <td>@form.ContactId</td>
+            <td>@form.Name</td>
+            <td>@form.Surname</td>
+            <td>@form.Mail</td>
+            <td>@form.Subject</td>
+            <td id="tableDataOverFlow">@form.Message</td>
+            <td>@form.MessageDate</td>
+            <td><a href="/Contact/MessageDetails/@form.ContactId" class="btn btn-info" style="background-color:darkseagreen;color:black">Detay</a></td>
+            <td><a href="/Contact/DeleteMessage/@form.ContactId" class="btn btn-danger" onclick="return confirm('Bu mesajı silmek istediğine emin misin?')" style="background-color:darkred">Sil</a></td>
+
+        </tr>
+    }
+</table>
+<br />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("SendBox", new { page }))

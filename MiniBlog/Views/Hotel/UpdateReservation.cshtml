@@ -1,0 +1,40 @@
+﻿﻿@model EntityLayer.Concrete.Reservation
+@{ ViewBag.Title = "UpdateReservation";
+    Layout = "~/Views/Shared/AdminLayout.cshtml"; }
+
+<a class="btn btn-danger" style="margin-bottom: 10px" href="/Hotel/AdminReservationList">Geri Dön</a>
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.ReservationId)
+    @Html.Label("Tatil Paketi İsmi")
+    @Html.TextBoxFor(x => x.ReservationName, new { @class = "form-control", @onchange = "this.value = trim(this.value)", @required = "required" })
+    <br />
+    @Html.Label("Paket Bilgisi")
+    @Html.TextAreaFor(x => x.ReservationInfo, 5, 20, new { @class = "form-control", @onchange = "this.value = trim(this.value)", @required = "required" })
+    <br />
+    @Html.Label("Paket Sayısı")
+    @Html.TextBoxFor(x => x.ReservationNr, new { @class = "form-control", @disabled = "disabled", @required = "required" })
+    <br />
+    @Html.Label("Resim Yolu")
+    @Html.TextBoxFor(x => x.ImageURL, new { @class = "form-control", @oninput = "this.value = trim(this.value)", @required = "required" })
+    <br />
+    <div class="row">
+        <div class="col-sm" style="text-align:center">
+            @Html.Label("Başlangıç Tarihi")
+            <input class="form-control" type="date" name="StartDate" value="@ViewBag.start" required />
+        </div>
+        @*@Html.TextBoxFor(x => x.StartDate, "{0:dd.MM.yyyy}", new { @class = "form-control", @required = "required" })*@
+        <br />
+        <div class="col-sm" style="text-align:center">
+            @Html.Label("Bitiş Tarihi")
+            <input class="form-control" type="date" name="EndDate" value="@ViewBag.end" required />
+        </div>
+    </div>
+    <br />
+    @Html.Label("Paket Ücreti")
+    @Html.TextBoxFor(x => x.ReservationPrice, new { @class = "form-control", @oninput = "this.value = trim(this.value)", onkeypress = "return isNumberKey(event)", @required = "required" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
+
+

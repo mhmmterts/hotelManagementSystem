@@ -1,0 +1,130 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <style>
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-cover overlay single-page" style="background-image: url('https://storage.kucukoteller.com.tr/images/cac7cee8b5ce4961735c93d22218aed6171ce675.jpg');">
+        <div class="container">
+            <div class="row same-height justify-content-center">
+                <div class="col-md-12 col-lg-10 same-height">
+                    <div class="post-entry text-center">
+                        <h1>TAU Hotel</h1>
+                        <p class="lead mb-4 text-white">Kalitenin, eğlencenin ve tatillerin 1 numaralı adresine hoşgeldiniz. </p>
+                        <p class="lead mb-4 text-white">Bize Ulaşın: +90 (123) 456-7890 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin:auto; background-color:beige">
+        <h3 style="text-align:center;">Otelimiz</h3>
+        <div style=" ">
+            <div class="wrapper row3" style="border: 10px solid #f0a38d; background-color: #f0a38d; border-radius: 20px; margin: 0px 25px auto; ">
+                <main class="hoc container clear">
+                    <div class="sectiontitle">
+                        <h3 class="heading">Hizmetlerimiz</h3>
+                        <p>Tüm hizmetlerimizde önceliğimiz müşteri memnuniyetidir.</p>
+                    </div>
+                    <p style="text-align:left" class="btmspace-50 justified">TAU Hotel 2000 yılında İzmir, Çeşme'de kurulmuş, bir oteldir. 22 yıldır müşterilerimize haftalık tatil paketleri sunmaktayız. Tatil süresince müşterilerimiz otelimizin sunmakta olduğu Rafting, Su Kayağı, Paraşüt, Dağ Gezisi gibi birçok aktiviteye katılım sağlayabilmektedir. Odalarımız standart olup maksimum 4 kişiliktir.</p>
+                </main>
+            </div>
+            <br />
+            <div class="wrapper row3" style="border: 10px solid #c1ed9d; background-color: #c1ed9d; border-radius: 20px; margin: 0px 75px auto; ">
+                <main class="hoc container clear">
+                    <div class="sectiontitle">
+                        <h3 class="heading">Vizyonumuz</h3>
+                        <p>Tüm hizmetlerimizde önceliğimiz müşteri memnuniyetidir.</p>
+                    </div>
+                    <p class="btmspace-50 justified">TAU Hotel 2000 yılında İzmir, Çeşme'de kurulmuş, bir oteldir. 22 yıldır müşterilerimize haftalık tatil paketleri sunmaktayız. Tatil süresince müşterilerimiz otelimizin sunmakta olduğu Rafting, Su Kayağı, Paraşüt, Dağ Gezisi gibi birçok aktiviteye katılım sağlayabilmektedir. Odalarımız standart olup maksimum 4 kişiliktir.</p>
+                </main>
+            </div>
+            <br />
+            <div class="wrapper row3" style="border: 10px solid #ace1f2; background-color: #ace1f2; border-radius: 20px; margin: 0px 25px auto; ">
+                <main class="hoc container clear">
+                    <div class="sectiontitle">
+                        <h3 class="heading">Misyonumuz</h3>
+                        <p>Tüm hizmetlerimizde önceliğimiz müşteri memnuniyetidir.</p>
+                    </div>
+                    <p class="btmspace-50 justified">TAU Hotel 2000 yılında İzmir, Çeşme'de kurulmuş, bir oteldir. 22 yıldır müşterilerimize haftalık tatil paketleri sunmaktayız. Tatil süresince müşterilerimiz otelimizin sunmakta olduğu Rafting, Su Kayağı, Paraşüt, Dağ Gezisi gibi birçok aktiviteye katılım sağlayabilmektedir. Odalarımız standart olup maksimum 4 kişiliktir.</p>
+                </main>
+            </div>
+            <br />
+            <div class="wrapper row3" style="border: 10px solid #e5b2f7; background-color: #e5b2f7; border-radius: 20px; margin: 0px 75px auto; ">
+                <main class="hoc container clear">
+                    <div class="sectiontitle">
+                        <h3 class="heading">Hedeflerimiz</h3>
+                        <p>Tüm hizmetlerimizde önceliğimiz müşteri memnuniyetidir.</p>
+                    </div>
+                    <p class="btmspace-50 justified">TAU Hotel 2000 yılında İzmir, Çeşme'de kurulmuş, bir oteldir. 22 yıldır müşterilerimize haftalık tatil paketleri sunmaktayız. Tatil süresince müşterilerimiz otelimizin sunmakta olduğu Rafting, Su Kayağı, Paraşüt, Dağ Gezisi gibi birçok aktiviteye katılım sağlayabilmektedir. Odalarımız standart olup maksimum 4 kişiliktir.</p>
+                </main>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <div style="background-color: #b1f0ce">
+        <div style="margin:auto;width:80%;">
+            <h3 style="text-align:center;">Otelimizden Kareler</h3>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" style="max-height:600px;border-radius:15px">
+                    <div class="carousel-item active" style="max-height:600px;">
+                        <img class="d-block w-100" src="https://storage.kucukoteller.com.tr/images/cac7cee8b5ce4961735c93d22218aed6171ce675.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <div style="background-color:black;width:50%;margin:auto;border-radius:15px;opacity:0.7">
+                                <h5>Otelimiz</h5>
+                                <p>3 katlıdır, havuz, sauna, spor salonu ve bar hizmetleri mevcuttur.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="max-height:600px;">
+                        <img class="d-block w-100" src="https://www.kasmahalhotel.com/wp-content/uploads/2018/06/kasmahalhotel-4-kisilik-oda.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <div style="background-color:black;width:50%;margin:auto;border-radius:15px;opacity:0.7">
+                                <h5>Odalarımız</h5>
+                                <p>Max 4 kişiliktir, 2 adet lavabo ve banyo bulunmaktadır, sınırsız internet erişimi ve UHD televizyon mevcuttur.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="max-height:600px;">
+                        <img class="d-block w-100" src="https://blog.zaferendustriyelmutfak.com/wp-content/uploads/2017/09/barmutfa%C4%9F%C4%B1.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <div style="background-color:black;width:50%;margin:auto;border-radius:15px;opacity:0.7">
+                                <h5>Bar</h5>
+                                <p>Her çeşit içecek mevcuttur, haftada 2 gün canlı müzik hizmetimiz vardır.<br />18 yaşından küçükler giremez.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <br />
+    </div>
+    <!-- Custom fonts for this theme -->
+</body>
+@Html.Action("Footer", "About")
+
+
+

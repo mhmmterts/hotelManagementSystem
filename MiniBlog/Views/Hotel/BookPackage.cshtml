@@ -1,0 +1,161 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Reservation>
+
+@{
+    ViewBag.Title = "BookPackage";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        .modal-body {
+            max-height: calc(100vh - 210px);
+            overflow-y: auto;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="site-cover same-height" style="background-image: url('https://storage.kucukoteller.com.tr/images/cac7cee8b5ce4961735c93d22218aed6171ce675.jpg'); background-repeat: no-repeat; background-attachment: fixed;">
+        <div class="container">
+            <div class="container" style="background-color:#b8c991; margin-bottom: 20px; border-radius: 15px;width:50%">
+                <div style="text-align:center;font-size:24px;margin:auto"><b>Tarih Araması</b></div>
+                @using (Html.BeginForm("BookPackage", "Hotel", FormMethod.Get, new { @autocomplete = "off" }))
+                {
+                    <table style="width:100%;margin-left:25px">
+                        <tr>
+                            <th>Başlangıç Tarihi</th>
+                        </tr>
+                        <tr style="width:100%">
+                            <td style="width:50%"><input style="font-size:15px" class="form-control startDate" type="date" id="startDate" min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="myFunction(this.value)" oncl name="startdate"/></td>
+                            <td style="width:15%"><input class="btn btn-success" style="font-size: 15px;margin-left:15px" type="Submit" value="Arama yap"></td>
+                            <td><a href="/Hotel/BookPackage" class="btn btn-info" style="margin-left:7px">Sıfırla</a></td>
+                        </tr>
+                    </table>
+                    <br />
+                }
+            </div>
+            @foreach (var item in Model)
+            {
+                if (item.SoldReservationNr != item.ReservationNr)
+                {
+                    <div class="portfolio-item" data-toggle="modal" data-target=@("#" + item.ReservationName) style="width: 100%; height: 300px; outline: thick solid; background-color:white; margin-bottom:20px">
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            @{int nrOfPackets = item.ReservationNr - item.SoldReservationNr; }
+                            <h2 class="portfolio-item-yazi" style="color:black">Kalan Paket Sayısı: @nrOfPackets</h2>
+                        </div>
+                        <img src="@item.ImageURL" alt="No image." onerror="this.src='https://i.hizliresim.com/9dl1li5.png'" width="300" height="300" style="float: left; max-width: 300px; max-height: 300px;margin-right:10px">
+                        <div class="container" style="color:black">
+                            @item.ReservationInfo
+                        </div>
+                        <!--odunc alması için buton-->
+
+                    </div>
+                }
+            }
+
+        </div>
+
+        @foreach (var item in Model)
+        {
+            if (item.SoldReservationNr != item.ReservationNr)
+            {
+                <div class="modal fade bd-example-modal-lg" id=@(item.ReservationName) role="dialog" aria-hidden="true" style="height:1250px">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- Portfolio Modal - Title -->
+
+                                <div style="text-align:center">
+                                    <h2>@item.ReservationName (@item.StartDate.ToString("dd.MM")-@item.EndDate.ToString("dd.MM.yyyy")) </h2>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Portfolio Modal - Image -->
+                                <img src="@item.ImageURL" alt="No image." onerror="this.src='https://i.hizliresim.com/9dl1li5.png'" style="float: left; width: 300px; height: 300px; max-width:300px; max-height:300px;margin-right:50px">
+                                <!-- Portfolio Modal - Text -->
+                                <form class="form-group" method="post" style="text-decoration:double">
+                                    <h5 style="display:inline-block;margin-right:5px;margin-bottom:15px">Kişi Sayısı:</h5>
+                                    <input type="hidden" value="@item.ReservationId" name="ReservationId" />
+                                    <select class="form-control" style="display:inline-block; width: 25%;font-size:12px;height:50%" name="NrOfCustomers">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                    <h5>Ek hizmet seçeneklerimiz:</h5>
+                                    <ul style="list-style-type:none;display:inline-block">
+                                        @foreach (var i in ViewBag.activities)
+                                        {
+                                            <li>
+                                                <input id="@i.ActivityId" name="@i.ActivityName" type="checkbox">
+                                                <label for="@i.ActivityId">@i.ActivityName</label>
+                                            </li>
+                                        }
+                                    </ul>
+                                    @if (!this.User.Identity.IsAuthenticated)
+                                    {
+                                        <div>
+                                            <label style="margin-top: 85px;display:block">İsim Soyisim:</label>
+                                            <input class="form-control" onkeypress="return isNumericKey(event)" onchange="this.value = trim(this.value)" type="text" name="CustomerName" maxlength="40" placeholder="Name" required />
+                                            <label style="margin-top: 10px">Email:</label>
+                                            <input class="form-control" type="email" name="Mail" maxlength="50" placeholder="Mail" required />
+                                            <label style="margin-top: 10px">Telefon No:</label>
+                                            <input class="form-control" onInput="this.value = phoneFormat(this.value)" type="text" onkeypress="return isNumberKey(event)" name="PhoneNumber" placeholder="(123) 456 7890" pattern=".{14,14}" required />
+                                            <button class="btn btn-info mr-auto" style="margin-top: 10px;font-size:12px; display: block" onclick="return confirm('Ödeme sayfasına yönlendirileceksiniz. Kabul ediyor musunuz?')">
+                                                Ödeme Yap
+                                            </button>
+                                        </div>
+                                    }
+                                    else if (User.IsInRole("A"))
+                                    {
+                                        <div>
+                                            <label style="margin-top: 85px;display:block">İsim Soyisim:</label>
+                                            <input class="form-control" onkeypress="return isNumericKey(event)" onchange="this.value = trim(this.value)" type="text" value="ADMIN" name="CustomerName" maxlength="40" placeholder="Name" required disabled />
+                                            <label style="margin-top: 10px">Email:</label>
+                                            <input class="form-control" type="email" name="Mail" maxlength="50" placeholder="Mail" value="ADMIN" required disabled />
+                                            <label style="margin-top: 10px">Telefon No:</label>
+                                            <input class="form-control" onInput="this.value = phoneFormat(this.value)" type="text" name="PhoneNumber" value="ADMIN" placeholder="(123) 456 7890" pattern=".{14,14}" required disabled />
+                                            <button class="btn btn-info mr-auto" style="margin-top: 10px;font-size:12px; display: block" disabled onclick="return confirm('Ödeme sayfasına yönlendirileceksiniz. Kabul ediyor musunuz?')">
+                                                Ödeme Yap
+                                            </button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <label style="margin-top: 85px;display:block">İsim Soyisim:</label>
+                                            <input class="form-control" onkeypress="return isNumericKey(event)" onchange="this.value = trim(this.value)" type="text" value="@ViewBag.name" name="CustomerName" maxlength="40" placeholder="Name" required disabled />
+                                            <label style="margin-top: 10px">Email:</label>
+                                            <input class="form-control" type="email" name="Mail" maxlength="50" placeholder="Mail" value="@ViewBag.mail" required disabled />
+                                            <label style="margin-top: 10px">Telefon No:</label>
+                                            <input class="form-control" onInput="this.value = phoneFormat(this.value)" type="text" name="PhoneNumber" value="@ViewBag.phone" placeholder="(123) 456 7890" pattern=".{14,14}" required disabled />
+                                            <button class="btn btn-info mr-auto" style="margin-top: 10px;font-size:12px; display: block" onclick="return confirm('Ödeme sayfasına yönlendirileceksiniz. Kabul ediyor musunuz?')">
+                                                Ödeme Yap
+                                            </button>
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("BookPackage", new { page }))
+    </div>
+</body>
+

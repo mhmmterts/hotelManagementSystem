@@ -1,0 +1,106 @@
+﻿﻿@model EntityLayer.Concrete.Customer
+@{
+    ViewBag.Title = "ReservationDetail";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+<a class="btn btn-danger" style="margin-top:10px" href="/Panel/Index"><i class="glyphicon glyphicon-menu-left"></i>Geri Dön</a>
+<div style="text-align: center; font-size: 20px; border: 2px solid #d6b763; background-color: #d6b763; border-radius: 5px; width: 50%; margin: auto ">
+    <span>Rezervasyon Bilgileriniz</span>
+</div>
+<hr />
+<div class="container">
+    <table class="table table-bordered" style="background-color: rgb(242,242,242) ">
+        <tr>
+            <td width="50%">
+                <b>Paket İsmi:</b>
+            </td>
+            <td>
+                @ViewBag.reservation.ReservationName
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <b>Paket Ücreti:</b>
+            </td>
+            <td>
+                @ViewBag.reservation.ReservationPrice
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Kişi Sayısı:</b>
+            </td>
+            <td>
+                @ViewBag.bookedReservation.NrOfCustomers
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Başlangıç Tarihi:</b>
+            </td>
+            <td>
+                <span>@ViewBag.reservation.StartDate.ToString("dd.MM.yyyy")</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Bitiş Tarihi:</b>
+            </td>
+            <td>
+                <span>@ViewBag.reservation.EndDate.ToString("dd.MM.yyyy")</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Toplam Ücret</b>
+            </td>
+            <td>
+                <span>@ViewBag.bookedReservation.TotalPrice</span>
+            </td>
+        </tr>
+    </table>
+    <b>*NOT:</b> ek hizmetler için kişi başı ücret alınır.
+</div>
+
+<hr />
+<div style="text-align: center; font-size: 20px; border: 2px solid #d6b763; background-color: #d6b763; border-radius: 5px; width: 50%; margin: auto ">
+    <span>Seçilen Ek Aktiviteler</span>
+</div>
+<hr />
+@foreach (var item in ViewBag.bookedActivities)
+{
+    <div class="container">
+        <table class="table table-bordered" style="background-color: rgb(242,242,242) ">
+            <tr>
+                <td width="50%">
+                    <b>Aktivite İsmi</b>
+                </td>
+                <td>
+                    <span>@item.ActivityName</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Aktivite Ücreti</b>
+                </td>
+                <td>
+                    <span>@item.ActivityPrice x @ViewBag.bookedReservation.NrOfCustomers</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Aktivite Bilgisi</b>
+                </td>
+                <td>
+                    <span>@item.ActivityInfo </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+
+<!-- Kullanici profil bilgileri formu bitis-->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/input.js"></script>
+

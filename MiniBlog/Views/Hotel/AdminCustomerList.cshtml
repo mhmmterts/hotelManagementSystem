@@ -1,0 +1,46 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Customer>
+@{
+    ViewBag.Title = "AdminCustomerList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<head>
+    <title>Müşteri Listesi</title>
+</head>
+<h2>Müşteri Listesi</h2>
+<a class="btn btn-warning" style="color:black;float:left;margin-top:10px" href="/Hotel/GetCustomerExcelFile">Tabloyu excele taşı</a>
+@using (Html.BeginForm("AdminCustomerList", "Hotel", FormMethod.Get))
+{
+    <div class="container">
+        <div style="margin-top:15px; margin-bottom:15px; margin:auto; margin-top:15px; width:50%">
+            @Html.TextBox("arama", "", new { @class = "form-control", @style = "width:60%;float:left;margin-bottom:10px", @placeholder = "Müşteri ismi, email veya tatil paketi ara...", @maxlength = "30" })
+            <input class="btn btn-success" style="margin-left:15px; width:20%" type="submit" value="Arama yap">
+            <a href="/Hotel/AdminCustomerList" class="btn btn-info" style="margin-left:7px">Sıfırla</a>
+        </div>
+    </div>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>İsim</th>
+        <th>Email</th>
+        <th>Telefon Nr.</th>
+        <th>Tatil Bilgileri</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CustomerId</td>
+            <td>@item.CustomerName</td>
+            <td id="tableDataOverFlow">@item.Mail</td>
+            <td>@item.PhoneNumber</td>
+            <td><a href="/Hotel/ShowReservations/@item.CustomerId" class="btn btn-danger">Görüntüle</a></td>
+            <td><a href="/Hotel/UpdateCustomer/@item.CustomerId" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminCustomerList", new { page }))

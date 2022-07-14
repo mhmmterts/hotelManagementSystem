@@ -1,0 +1,43 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.SubscribeMail>
+@{
+    ViewBag.Title = "SubscribedMails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@if (ViewBag.control == -1)
+{
+    <div class="alert alert-danger" role="alert" style="width:100%;text-align:center;margin:auto">
+        <b>@ViewBag.message</b>
+    </div>
+}
+<h2>Blog Bülteni Aboneleri</h2>
+@using (Html.BeginForm("SubscribedMails", "MailSubscribe", FormMethod.Get))
+{
+    <div class="container">
+        <div style="margin-top:15px; margin-bottom:15px; margin:auto; margin-top:15px; width:50%">
+            @Html.TextBox("arama", "", new { @class = "form-control", @style = "width:60%;float:left;margin-bottom:10px", @placeholder = "Email ara...", @maxlength = "30" })
+            <input class="btn btn-success" style="margin-left:15px; width:20%" type="submit" value="Arama yap">
+            <a href="/MailSubscribe/SubscribedMails" class="btn btn-info" style="margin-left:7px">Sıfırla</a>
+        </div>
+    </div>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MailId</td>
+            <td>@item.Mail</td>
+            <td><a href="/MailSubscribe/DeleteMail/@item.MailId" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+
+
+</table>
+<br />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("SubscribedMails", new { page }))
